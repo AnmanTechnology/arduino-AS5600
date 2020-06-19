@@ -6,22 +6,22 @@ long enc, lenc = 0;
 
 void setup()
 {
-  Serial.begin(9600);
-  encoder.setZero();
+    Serial.begin(9600);
+    encoder.setZero();
 }
 
 void loop()
 {
 
-  enc = encoder.getPosition();
+    enc = encoder.getPosition();
 
-  if (enc != lenc)
-  {
-    Serial.println(enc);
-    lenc = enc;
-  }
-  if (abs(enc) > 20000)
-  {
-    encoder.setZero();
-  }
+    if (enc != lenc)
+    {
+        Serial.println(enc);
+        lenc = enc;
+    }
+    if (abs(enc) > 20000)
+    {
+        encoder.setZero();
+    }
 }

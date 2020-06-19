@@ -6,17 +6,17 @@ int ang, lang = 0;
 
 void setup()
 {
-  Serial.begin(9600);
+    Serial.begin(9600);
 }
 
 void loop()
 {
 
-  ang = encoder.getAngle();
+    ang = encoder.getAngle();
 
-  if (ang != lang)
-  {
-    Serial.println(ang);
-    lang = ang;
-  }
+    if (ang != lang)
+    {
+        Serial.println(ang);
+        lang = ang;
+    }
 }

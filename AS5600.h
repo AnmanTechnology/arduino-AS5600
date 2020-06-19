@@ -30,14 +30,14 @@
 
 class AS5600
 {
-  public:
+public:
     AS5600();
     long getPosition();
     int getAngle();
     int getStatus();
     void setZero();
 
-  private:
+private:
     long output, last_output;
     int revolutions, offset, first;
 

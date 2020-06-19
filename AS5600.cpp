@@ -45,14 +45,15 @@ void AS5600::setZero()
     offset = _getRegisters2(_RAWANGLEAddressMSB, _RAWANGLEAddressLSB);
 }
 
-int AS5600::_getRegister(byte register1)
+int AS5600::_getRegister(byte reg)
 {
     Wire.beginTransmission(_AS5600_ADDR);
-    Wire.write(register1);
+    Wire.write(reg);
     Wire.endTransmission();
 
     Wire.requestFrom(_AS5600_ADDR, 1);
-
+    while (Wire.available() == 0)
+        ;
     if (Wire.available() <= 1)
     {
         _msb = Wire.read();
@@ -72,7 +73,8 @@ long AS5600::_getRegisters2(byte registerMSB, byte registerLSB)
     delay(10);
 
     Wire.requestFrom(_AS5600_ADDR, 1);
-
+    // while (Wire.available() == 0)
+    //     ;
     if (Wire.available() <= 1)
     {
         _msb = Wire.read();
@@ -83,7 +85,8 @@ long AS5600::_getRegisters2(byte registerMSB, byte registerLSB)
     Wire.beginTransmission(_AS5600_ADDR);
     Wire.write(registerLSB);
     Wire.endTransmission();
-
+    // while (Wire.available() == 0)
+    //     ;
     if (Wire.available() <= 1)
     {
         _lsb = Wire.read();
